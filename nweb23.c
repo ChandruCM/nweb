@@ -179,7 +179,8 @@ int main(int argc, char **argv)
   if(port < 0 || port >60000)
     logger(ERROR,"Invalid port number (try 1->60000)",argv[1],0);
   serv_addr.sin_family = AF_INET;
-  serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+  //serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
   serv_addr.sin_port = htons(port);
   if(bind(listenfd, (struct sockaddr *)&serv_addr,sizeof(serv_addr)) <0)
     logger(ERROR,"system call","bind",0);
